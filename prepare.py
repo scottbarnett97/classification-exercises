@@ -58,11 +58,12 @@ def split_data(df,strat):
     '''
     train_validate, test = train_test_split(df, test_size=.2, random_state=123, stratify=df[{strat}])
     train, validate = train_test_split(train_validate, 
-                                       test_size=.3, 
+                                       test_size=.25, 
                                        random_state=123, 
                                        stratify=train_validate[{strat}])
     # Validate my split.
-    print(f'train -> {train.shape}')
-    print(f'validate -> {validate.shape}')
-    print(f'test -> {test.shape}')
+    print(f'train -> {train.shape}, {round(train.shape[0]*100 / df.shape[0],2)}%')
+    print(f'validate -> {validate.shape},{round(validate.shape[0]*100 / df.shape[0],2)}%')
+    print(f'test -> {test.shape}, {round(test.shape[0]*100 / df.shape[0],2)}%')
     return train, validate, test
+

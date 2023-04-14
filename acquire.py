@@ -1,4 +1,11 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import scipy.stats as stats
+import seaborn as sns
+import numpy as np
+import env
 import os
+
 """ This function pulls in the Titanic dataframe"""
 def get_titanic_data():
     filename = "titanic.csv"
@@ -17,7 +24,7 @@ def get_titanic_data():
     
 
     """ This Function pulls in ght Iris dataframe"""
-    def get_iris_data():
+def get_iris_data():
     filename = "iris.csv"
 
     if os.path.isfile(filename):
@@ -34,7 +41,7 @@ def get_titanic_data():
     
 
 """ This Function pulls in ght Telco_churn dataframe"""
-    def get_telco_data():
+def get_telco_data():
     filename = "telco.csv"
 
     if os.path.isfile(filename):

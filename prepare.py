@@ -48,6 +48,7 @@ def prep_telco(df):
     df = df.drop(columns=['payment_type_id', 'internet_service_type_id','contract_type_id'])    
     dummy_df = pd.get_dummies(df[['gender','partner','dependents','tech_support','streaming_tv','streaming_movies','paperless_billing','churn','contract_type','internet_service_type','payment_type']], dummy_na=False, drop_first=[True, True])
     df = pd.concat([df, dummy_df], axis=1)
+    df = df.total_charges.replace(' ',0).astype(float)
     return df
 
 def split_data(df,strat):

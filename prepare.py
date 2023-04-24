@@ -22,6 +22,19 @@ def prep_iris(df):
     return df
 
 
+def prep_titanic2(df):
+    '''
+    This function will drop any duplicate observations, 
+    drop ['deck', 'embarked', 'class', 'age'], fill missing embark_town with 'Southampton'
+    and create dummy vars from sex and embark_town. 
+    '''
+    df = df.drop_duplicates()
+    df = df.drop(columns=['deck', 'embarked', 'class'])
+    df['embark_town'] = df.embark_town.fillna(value='Southampton')
+    dummy_df = pd.get_dummies(df[['sex', 'embark_town']], drop_first=True)
+    df = pd.concat([df, dummy_df], axis=1)
+    return df
+
 def prep_titanic(df):
     '''
     This function will drop any duplicate observations, 
@@ -34,8 +47,6 @@ def prep_titanic(df):
     dummy_df = pd.get_dummies(df[['sex', 'embark_town']], drop_first=True)
     df = pd.concat([df, dummy_df], axis=1)
     return df
-
-
 
 def prep_telco(df):
     '''
